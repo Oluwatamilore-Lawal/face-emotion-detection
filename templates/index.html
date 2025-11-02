@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emotion Detection App</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 50px;
+        }
+        input[type=file], input[type=submit] {
+            margin-top: 20px;
+        }
+        img {
+            margin-top: 20px;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .prediction {
+            font-size: 1.5em;
+            color: #333;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Emotion Detection App 😊</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <br>
+        <input type="submit" value="Predict Emotion">
+    </form>
+
+    {% if image_path %}
+    <img src="{{ image_path }}" alt="Uploaded Image">
+    <div class="prediction">Predicted Emotion: <strong>{{ prediction }}</strong></div>
+    {% endif %}
+</body>
+</html>
